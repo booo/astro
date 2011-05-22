@@ -1,0 +1,6 @@
+[submodule "showdown"]
+	path = showdown
+	url = https://github.com/coreyti/showdown.git
+[submodule "markdown-js"]
+	path = markdown-js
+	url = https://github.com/evilstreak/markdown-js.git

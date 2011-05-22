@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Astro for everyone</title>
+        <script type="text/javascript" src="showdown/compressed/showdown.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript">
+            var init = function() {
+                $.get('source.mrd', function() {
+                    var container = document.getElementById('container');
+                    var converter = new Showdown.converter();
+                    var html = converter.makeHtml(text);
+                    container.innerHTML = html;
+                });
+            }
+        </script>
+    </head>
+    <body onload="init();">
+        <div id="container"></div>
+    </body>
+<html>
