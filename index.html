@@ -3,19 +3,25 @@
         <title>Astro for everyone</title>
         <script type="text/javascript" src="showdown/compressed/showdown.js"></script>
         <script type="text/javascript" src="jquery.js"></script>
-        <script type="text/javascript" src="mathjax/MathJax.js?config=default"></script>
         <script type="text/javascript">
             var init = function() {
-                $.get('source.md', function(data) {
-                    var container = document.getElementById('container');
-		    var converter = new Showdown.converter();
-                    var html = converter.makeHtml(data);
-                    container.innerHTML = html;
+		    $.get('source.md', function(data) {
+			var container = document.getElementById('container');
+			var converter = new Showdown.converter();
+			var html = converter.makeHtml(data);
+			container.innerHTML = html;
+			var mathjax = document.createElement('script');
+			mathjax.setAttribute('type','text/javascript');
+			mathjax.setAttribute('src','mathjax/MathJax.js?config=TeX-AMS_HTML');
+			var config = 'MathJax.Hub.Startup.onload();'
+			if (window.opera) { mathjax.innerHTML = config; }
+			else { mathjax.text = config; }	
+			document.getElementsByTagName('head')[0].appendChild(mathjax);
                 });
             }
         </script>
     </head>
     <body onload="init();">
-        <div id="container"></div>
+	    <div id="container"></div>
     </body>
 <html>
